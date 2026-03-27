@@ -1,0 +1,52 @@
+// No need to copy, this is included in the starter code.
+
+@Composable
+fun GameLayout(modifier: Modifier = Modifier) {
+   val mediumPadding = dimensionResource(R.dimen.padding_medium)
+   Card(
+       modifier = modifier,
+       elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
+   ) {
+       Column(
+           verticalArrangement = Arrangement.spacedBy(mediumPadding),
+           horizontalAlignment = Alignment.CenterHorizontally,
+           modifier = Modifier.padding(mediumPadding)
+       ) {
+           Text(
+               modifier = Modifier
+                   .clip(shapes.medium)
+                   .background(colorScheme.surfaceTint)
+                   .padding(horizontal = 10.dp, vertical = 4.dp)
+                   .align(alignment = Alignment.End),
+               text = stringResource(R.string.word_count, 0),
+               style = typography.titleMedium,
+               color = colorScheme.onPrimary
+           )
+           Text(
+               text = "scrambleun",
+               style = typography.displayMedium
+           )
+           Text(
+               text = stringResource(R.string.instructions),
+               textAlign = TextAlign.Center,
+               style = typography.titleMedium
+           )
+           OutlinedTextField(
+               value = "",
+               singleLine = true,
+               shape = shapes.large,
+               modifier = Modifier.fillMaxWidth(),
+               colors = TextFieldDefaults.textFieldColors(containerColor = colorScheme.surface),
+               onValueChange = { },
+               label = { Text(stringResource(R.string.enter_your_word)) },
+               isError = false,
+               keyboardOptions = KeyboardOptions.Default.copy(
+                   imeAction = ImeAction.Done
+               ),
+               keyboardActions = KeyboardActions(
+                   onDone = { }
+               )
+           )
+       }
+   }
+}
